@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Polling Unit Result</h3>
+
+<form method="post" class="mb-4">
+    <select name="polling_unit" class="form-select" required>
+        <option value="">Select Polling Unit</option>
+        {% for pu in polling_units %}
+            <option value="{{ pu.uniqueid }}">{{ pu.polling_unit_name }}</option>
+        {% endfor %}
+    </select>
+    <button class="btn btn-primary mt-3">View Result</button>
+</form>
+
+{% if results %}
+<table class="table table-bordered">
+    <tr>
+        <th>Party</th>
+        <th>Score</th>
+    </tr>
+    {% for row in results %}
+    <tr>
+        <td>{{ row.party_abbreviation }}</td>
+        <td>{{ row.party_score }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

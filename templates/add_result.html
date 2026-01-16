@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Add Polling Unit Result</h3>
+
+<form method="post">
+    <input class="form-control mb-3"
+           name="polling_unit_id"
+           placeholder="Polling Unit ID" required>
+
+    {% for party in parties %}
+        <input class="form-control mb-2"
+               name="{{ party.partyname }}"
+               placeholder="{{ party.party_name }} score"
+               required>
+    {% endfor %}
+
+    <button class="btn btn-warning mt-3">Save Result</button>
+</form>
+
+{% endblock %}
